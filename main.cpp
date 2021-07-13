@@ -10,13 +10,15 @@ int main(int argc, char* argv[]){
 	if(f1 == NULL || f2 == NULL)
 		return -1;
 
-	char a[4], b[4];
+	unsigned char a[4], b[4];
 	fread(a, sizeof(a), 1, f1);
 	fread(b, sizeof(b), 1, f2);
 	fclose(f1);
 	fclose(f2);
-	uint32_t res1 = (int(a[0])&0xff) << 24 | (int(a[1])&0xff) << 16 | (int(a[2])&0xff) << 8 | (int(a[3])&0xff);
-	uint32_t res2 = (int(b[0])&0xff) << 24 | (int(b[1])&0xff) << 16 | (int(b[2])&0xff) << 8 | (int(b[3])&0xff);
+	
+	uint32_t res1 = a[0] << 24 | a[1] << 16 | a[2] << 8 | a[3];
+	uint32_t res2 = b[0] << 24 | b[1] << 16 | b[2] << 8 | b[3];
+
 	printf("%x\n", res1);
 	printf("%x\n", res2);
 
